@@ -20,21 +20,19 @@
 // nums2.length == n
 
 var merge = function(nums1, m, nums2, n) {
-    // if (m === 0) nums1 = [...nums2];
-    if (m === 0) nums1 = [...nums2];
-    if (n&&m) {
+    if (n) {
         for (let i = nums1.length-1; i >= 0; i--){
             console.log('i =', i);
             
             if (m && nums1[m-1] >= nums2[n-1])  {
-                console.log("m is", m);
+                console.log(`putting ${nums1[m-1]} to ${i} in nums1.`, "m is", m);
                 nums1[i] = nums1[m-1];
+                console.log(`now nums1[${i}] is ${nums1[i]}`)
                 m--;
-            }; 
-            
-            if (m===0 || nums1[m-1] < nums2[n-1]) {
-                console.log("n is", n);
+            } else if (m===0 || nums1[m-1] < nums2[n-1]) {
+                console.log(`putting ${nums2[n-1]} to ${i} in nums1.`,"n is", n);
                 nums1[i] = nums2[n-1];
+                console.log(`now nums1[${i}] is ${nums2[n-1]}`)
                 n--;
                 if (n === 0) break;
             };
@@ -46,7 +44,7 @@ var merge = function(nums1, m, nums2, n) {
 nums1 = [1,2,3,0,0,0], m = 3;
 nums2 = [2,5,6],       n = 3;
 
-// console.log(merge (nums1, m, nums2, n));
+console.log(merge (nums1, m, nums2, n));
 // console.log(merge ([0], 0, [1], 1));
 // console.log(merge ([1,2,0,0], 2, [1,1], 2));
-console.log(merge ([5,6,0,0], 2, [3,4], 2));
+// console.log(merge ([5,6,0,0], 2, [3,4], 2));
